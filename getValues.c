@@ -1,10 +1,11 @@
-#include "getValues.h"
 #include <stdio.h>
 #include <string.h>
+#include "getValues.h"
+#include "values.h"
 
 // Inicialização dos vetores para armazenar os valores dos parâmetros de cada processo
 
-int getValues(char* filename, char arr[][2], int period[], int executionTime[], int deadline[]) {
+int getValues(char* filename) {
   // Variáveis auxiliares para armazenar temporariamente os valores lidos
   // e para percores os 'vetores' (Estou considerando os valores de periodo,
   // tempo de execução e deadline como um vetor 3x3 e percorrendo ele para pegar os valores)
@@ -17,6 +18,7 @@ int getValues(char* filename, char arr[][2], int period[], int executionTime[], 
 
   if(fp == NULL) {
     printf("Erro na abertura do arquivo\n");
+    return -1;
   } else {
     // Lendo os nomes dos processos
     for(int j = 0; j < 3; j++) {
@@ -43,7 +45,8 @@ int getValues(char* filename, char arr[][2], int period[], int executionTime[], 
           deadline[index] = genericNumber;
           break;
         default:
-          printf("Erro\n");
+          printf("Erro na leitura do arquivo\n");
+          return -2;
           break;
       }
       

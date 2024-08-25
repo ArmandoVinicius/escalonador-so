@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 #include "getValues.h"
-
-char arr[3][2] = {"", "", ""};
-int period[3] = {0, 0, 0};
-int executionTime[3] = {0, 0, 0};
-int deadline[3] = {0, 0, 0};
+#include "values.h"
 
 int main() {
-  getValues("sistema1.txt", arr, period, executionTime, deadline);
+  int funcResult = getValues("sistema1.txt");
+
+  if (funcResult == -1) {
+    return 0;
+  } else if (funcResult == -2) {
+    return 0;
+  }
 
   for (int i = 0; i < 3; i++)
   {
